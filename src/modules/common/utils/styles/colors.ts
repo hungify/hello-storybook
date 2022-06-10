@@ -1,4 +1,4 @@
-export type ColorKey =
+type ColorKey =
   | 'blue'
   | 'green'
   | 'yellow'
@@ -23,7 +23,7 @@ export type ColorKey =
   | 'redDark'
   | 'greenDark';
 
-type Color = {
+export type Color = {
   [key in ColorKey]: string;
 };
 
