@@ -16,7 +16,17 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "~/models/*": ["./src/models/*"],
+      "~/services/*": ["./src/services/*"],
+      "~/utils/*": ["./src/utils/*"],
+      "~/components/*": ["./src/components/*"],
+      "~/pages/*": ["./src/pages/*"],
+      "~/layouts/*": ["./src/layouts/*"],
+      "~/styles/*": ["./src/styles/*"],
+      "~/hooks/*": ["./src/hooks/*"],
+      "~/locales/*": ["./src/locales/*"],
+      "~/modules/*": ["./src/modules/*"]
     }
   },
 

@@ -3,13 +3,14 @@ import './App.css';
 import { useState } from 'react';
 
 import logo from './logo.svg';
-import Counter from '~/components/Counter';
+import GlobalStyle from '~/modules/common/components/GlobalStyle';
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <div className='App'>
+      <GlobalStyle />
       <header className='App-header'>
         <img src={logo} className='App-logo' alt='logo' />
         <p>Hello Vite + React!</p>
@@ -19,7 +20,6 @@ function App() {
           </button>
         </p>
       </header>
-      <Counter count={count} />
     </div>
   );
 }
