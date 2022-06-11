@@ -15,8 +15,8 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "styled-components": "^5.3.5",
     "styled-normalize": "^8.0.7",
     "typeface-source-sans-pro": "^1.1.13"
@@ -30,6 +30,7 @@
     "@storybook/builder-vite": "^0.1.36",
     "@storybook/react": "^6.5.8",
     "@storybook/testing-library": "^0.0.11",
+    "@svgr/cli": "^6.2.1",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/styled-components": "^5.1.25",
