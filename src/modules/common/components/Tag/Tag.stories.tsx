@@ -3,7 +3,7 @@ import { Tag } from './Tag';
 import GlobalStyle from '../GlobalStyle'; // absolute import vite not working
 
 export default {
-  title: 'Tag',
+  title: 'Components/Tag',
   component: Tag,
   argTypes: {
     backgroundColor: { control: 'color' },

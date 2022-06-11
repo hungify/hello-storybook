@@ -3,7 +3,7 @@ import GlobalStyle from '../GlobalStyle'; // absolute import vite not working
 import { Status } from './Status';
 
 export default {
-  title: 'Status',
+  title: 'Components/Status',
   component: Status,
   argTypes: {
     backgroundColor: { control: 'color' },

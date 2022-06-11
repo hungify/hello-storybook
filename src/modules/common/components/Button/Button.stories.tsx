@@ -3,7 +3,7 @@ import GlobalStyle from '../GlobalStyle'; // absolute import vite not working
 import { Button } from './Button';
 
 export default {
-  title: 'Button',
+  title: 'Components/Button',
   component: Button,
   argTypes: {
     backgroundColor: { control: 'color' },

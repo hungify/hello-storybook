@@ -3,7 +3,7 @@ import GlobalStyle from '../GlobalStyle'; // absolute import vite not working
 import { Table } from './Table';
 
 export default {
-  title: 'Table',
+  title: 'Components/Table',
   component: Table,
   argTypes: {
     backgroundColor: { control: 'color' },

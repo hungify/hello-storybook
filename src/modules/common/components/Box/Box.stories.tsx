@@ -3,7 +3,7 @@ import GlobalStyle from '../GlobalStyle'; // absolute import vite not working
 import { Box } from './Box';
 
 export default {
-  title: 'Box',
+  title: 'Components/Box',
   component: Box,
   argTypes: {
     backgroundColor: { control: 'color' },
