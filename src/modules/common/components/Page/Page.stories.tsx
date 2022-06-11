@@ -1,18 +1,18 @@
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import GlobalStyle from '../GlobalStyle';
 import Header from '../Header';
-import Sidebar from '../Sidebar';
 import {
-  Home,
-  HomeFilled,
   Books,
   BooksFilled,
   Clipboard,
   ClipboardFilled,
   Cog,
   CogFilled,
+  Home,
+  HomeFilled,
 } from '../Icons';
+import Sidebar from '../Sidebar';
 import { Page } from './Page';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'layouts/Page',
@@ -21,25 +21,25 @@ export default {
 
 const routes = [
   {
-    path: 'home',
+    path: '#',
     icon: Home,
     activeIcon: HomeFilled,
     label: 'Home',
   },
   {
-    path: 'clipboard',
+    path: '#',
     icon: Clipboard,
     activeIcon: ClipboardFilled,
     label: 'Leave Management',
   },
   {
-    path: 'documents',
+    path: '#',
     icon: Books,
     activeIcon: BooksFilled,
     label: 'Documents',
   },
   {
-    path: 'setting',
+    path: '#',
     icon: Cog,
     activeIcon: CogFilled,
     label: 'Settings',

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import Content from './Content';
 
 const StyledPage = styled.div`

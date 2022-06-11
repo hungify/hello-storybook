@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useResolvedPath, useMatch } from 'react-router-dom';
 import Item from './Item';
 
 interface RouterItemProps {
@@ -7,8 +7,9 @@ interface RouterItemProps {
   [key: string]: any;
 }
 
-const RouterItem = ({ href, ...props }: RouterItemProps) => {
-  return <Item as={Link} to={href} active={true} {...props} />;
-};
+export default function RouterItem({ href, ...props }: RouterItemProps) {
+  const resolved = useResolvedPath(href);
+  const match = useMatch({ path: resolved.pathname, end: true });
 
-export default RouterItem;
+  return <Item to={href} active={match ? true : false} as={Link} {...props} />;
+}

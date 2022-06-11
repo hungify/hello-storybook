@@ -1,26 +1,35 @@
-import './App.css';
-
-import { useState } from 'react';
-
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import GlobalStyle from '~/modules/common/components/GlobalStyle';
+import Header from '~/modules/common/components/Header';
+import Page from '~/modules/common/components/Page';
+import Sidebar from '~/modules/common/components/Sidebar';
+import routes from '~/routes';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className='App'>
+    <BrowserRouter>
       <GlobalStyle />
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type='button' onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-      </header>
-    </div>
+      <Header />
+      <Page style={{ marginTop: '-3.5rem' }}>
+        <Sidebar>
+          {routes.map(({ path, icon, activeIcon, label }) => (
+            <Sidebar.RouterItem
+              key={path}
+              label={label}
+              href={path}
+              Icon={icon}
+              ActiveIcon={activeIcon}
+            />
+          ))}
+        </Sidebar>
+        <Routes>
+          {routes.map(({ element, path }) => (
+            <Route path={path} key={path} element={element} />
+          ))}
+          <Route path='*' element={<Page.Content>404 Not Found</Page.Content>} />
+        </Routes>
+      </Page>
+    </BrowserRouter>
   );
 }
 

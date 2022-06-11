@@ -1,14 +1,14 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import GlobalStyle from '../GlobalStyle';
 import {
-  Home,
-  HomeFilled,
   Books,
   BooksFilled,
   Clipboard,
   ClipboardFilled,
   Cog,
   CogFilled,
+  Home,
+  HomeFilled,
 } from '../Icons';
 import Page from '../Page';
 import { Sidebar } from './Sidebar';
@@ -20,25 +20,25 @@ export default {
 
 const routes = [
   {
-    path: 'home',
+    path: '#',
     icon: Home,
     activeIcon: HomeFilled,
     label: 'Home',
   },
   {
-    path: 'clipboard',
+    path: '#',
     icon: Clipboard,
     activeIcon: ClipboardFilled,
     label: 'Leave Management',
   },
   {
-    path: 'documents',
+    path: '#',
     icon: Books,
     activeIcon: BooksFilled,
     label: 'Documents',
   },
   {
-    path: 'setting',
+    path: '#',
     icon: Cog,
     activeIcon: CogFilled,
     label: 'Settings',
