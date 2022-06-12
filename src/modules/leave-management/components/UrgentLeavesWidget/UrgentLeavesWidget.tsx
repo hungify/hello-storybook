@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import Box from '~/modules/common/components/Box';
 import Slider from '~/modules/common/components/Slider';
 import { colors, typography } from '~/modules/common/utils/styles';
+import useGetUrgentLeaveRequests from '~/modules/leave-management/components/UrgentLeavesWidget/data/useGetUrgentLeaveRequests';
 import LeaveRequest from '~/modules/leave-management/components/UrgentLeavesWidget/LeaveRequest';
-
-import mocks from './data/mocks';
+import Loader from '~/modules/leave-management/components/UrgentLeavesWidget/Loader';
 
 const WidgetHeader = styled.span`
   display: block;
@@ -14,17 +14,18 @@ const WidgetHeader = styled.span`
   margin-bottom: 1.5rem;
 `;
 
-const UrgentLeavesWidget = () => {
-  return (
+export default function UrgentLeavesWidget() {
+  const { loading, data: urgentLeaveRequests } = useGetUrgentLeaveRequests();
+  return loading ? (
+    <Loader />
+  ) : (
     <Box>
-      <WidgetHeader>Urgent leave requests ({mocks.length})</WidgetHeader>
+      <WidgetHeader>Urgent leave requests ({urgentLeaveRequests?.length})</WidgetHeader>
       <Slider>
-        {mocks.map(({ user, reason, id }) => (
-          <LeaveRequest key={id} user={user} reason={reason} />
+        {urgentLeaveRequests?.map((leaveRequest) => (
+          <LeaveRequest key={leaveRequest.id} {...leaveRequest} />
         ))}
       </Slider>
     </Box>
   );
-};
-
-export default UrgentLeavesWidget;
+}

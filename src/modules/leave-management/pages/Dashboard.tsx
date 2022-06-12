@@ -1,6 +1,6 @@
 import Grid from '~/modules/common/components/Grid';
 import Page from '~/modules/common/components/Page';
-import UrgentLeavesWidget from '~/modules/leave-management/components/UrgentLeavesWidget/UrgentLeavesWidget';
+import UrgentLeavesWidget from '~/modules/leave-management/components/UrgentLeavesWidget';
 
 const Dashboard = () => (
   <Page.Content>
