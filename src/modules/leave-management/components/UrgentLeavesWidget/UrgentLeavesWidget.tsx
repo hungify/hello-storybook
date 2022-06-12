@@ -3,7 +3,9 @@ import Box from '~/modules/common/components/Box';
 import Slider from '~/modules/common/components/Slider';
 import { colors, typography } from '~/modules/common/utils/styles';
 import useGetUrgentLeaveRequests from '~/modules/leave-management/components/UrgentLeavesWidget/data/useGetUrgentLeaveRequests';
-import LeaveRequest from '~/modules/leave-management/components/UrgentLeavesWidget/LeaveRequest';
+import LeaveRequest, {
+  LeaveRequestProps,
+} from '~/modules/leave-management/components/UrgentLeavesWidget/LeaveRequest';
 import Loader from '~/modules/leave-management/components/UrgentLeavesWidget/Loader';
 
 const WidgetHeader = styled.span`
@@ -15,7 +17,11 @@ const WidgetHeader = styled.span`
 `;
 
 export default function UrgentLeavesWidget() {
-  const { loading, data: urgentLeaveRequests } = useGetUrgentLeaveRequests();
+  const { loading, data: urgentLeaveRequests } = useGetUrgentLeaveRequests() as {
+    loading: boolean;
+    data: LeaveRequestProps[];
+  };
+
   return loading ? (
     <Loader />
   ) : (

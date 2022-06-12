@@ -1,4 +1,4 @@
-type ColorKey =
+export type ColorKey =
   | 'blue'
   | 'green'
   | 'yellow'

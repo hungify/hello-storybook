@@ -1,5 +1,6 @@
 import Grid from '~/modules/common/components/Grid';
 import Page from '~/modules/common/components/Page';
+import LeavePlanChartWidget from '~/modules/leave-management/components/LeavePlanChartWidget';
 import UrgentLeavesWidget from '~/modules/leave-management/components/UrgentLeavesWidget';
 
 const Dashboard = () => (
@@ -9,10 +10,7 @@ const Dashboard = () => (
         <UrgentLeavesWidget />
       </Grid.Item>
       <Grid.Item span={6}>
-        <UrgentLeavesWidget />
-      </Grid.Item>
-      <Grid.Item span={12}>
-        <UrgentLeavesWidget />
+        <LeavePlanChartWidget />
       </Grid.Item>
     </Grid>
   </Page.Content>

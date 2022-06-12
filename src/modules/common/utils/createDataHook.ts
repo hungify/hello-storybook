@@ -1,7 +1,8 @@
 import React from 'react';
+import type { BarChartConfig } from '~/modules/leave-management/components/LeavePlanChartWidget/data/mocks';
 import { LeaveRequestProps } from '~/modules/leave-management/components/UrgentLeavesWidget/LeaveRequest';
 
-const createDataHook = (data: LeaveRequestProps[]) => () => {
+const createDataHook = (data: LeaveRequestProps[] | BarChartConfig) => () => {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {

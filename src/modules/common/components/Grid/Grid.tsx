@@ -8,7 +8,7 @@ const StyledGrid = styled.div`
 `;
 
 interface GridProps {
-  [key: string]: any;
+  children: React.ReactNode;
 }
 
 function Grid(props: GridProps) {

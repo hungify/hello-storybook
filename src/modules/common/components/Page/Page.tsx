@@ -8,7 +8,7 @@ const StyledPage = styled.div`
 `;
 
 interface PageProps {
-  [key: string]: any;
+  children: React.ReactNode;
 }
 
 function Page(props: PageProps) {

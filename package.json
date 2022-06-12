@@ -19,6 +19,7 @@
     "react-dom": "^18.1.0",
     "react-loading-skeleton": "^3.1.0",
     "react-router-dom": "^6.3.0",
+    "recharts": "^2.1.10",
     "styled-components": "^5.3.5",
     "styled-normalize": "^8.0.7",
     "swiper": "6.8.4",
