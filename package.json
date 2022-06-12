@@ -20,6 +20,7 @@
     "react-router-dom": "^6.3.0",
     "styled-components": "^5.3.5",
     "styled-normalize": "^8.0.7",
+    "swiper": "6.8.4",
     "typeface-source-sans-pro": "^1.1.13"
   },
   "devDependencies": {
@@ -49,6 +50,7 @@
     "eslint-plugin-react-hooks": "^4.5.0",
     "prettier": "^2.6.2",
     "prop-types": "^15.8.1",
+    "sass": "^1.52.3",
     "typescript": "^4.6.3",
     "vite": "^2.9.9",
     "vite-tsconfig-paths": "^3.5.0"

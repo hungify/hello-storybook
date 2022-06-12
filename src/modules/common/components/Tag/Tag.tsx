@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { colors, typography } from '../../utils/styles'; // absolute import vite not working
 
-type TagVariant = 'blue' | 'green' | 'yellow' | 'orange' | 'teal';
+export type TagVariant = 'blue' | 'green' | 'yellow' | 'orange' | 'teal';
 
 interface TagProps {
   label: string;
