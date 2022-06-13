@@ -9,6 +9,7 @@ const StyledGrid = styled.div`
 
 interface GridProps {
   children: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
 function Grid(props: GridProps) {

@@ -3,7 +3,7 @@ import GlobalStyle from '~/modules/common/components/GlobalStyle';
 import Header from '~/modules/common/components/Header';
 import Page from '~/modules/common/components/Page';
 import Sidebar from '~/modules/common/components/Sidebar';
-import routes from '~/routes';
+import routes, { mainRoutes } from '~/routes';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Header />
       <Page style={{ marginTop: '-3.5rem' }}>
         <Sidebar>
-          {routes.map(({ path, icon, activeIcon, label }) => (
+          {mainRoutes.map(({ path, icon, activeIcon, label }) => (
             <Sidebar.RouterItem
               key={path}
               label={label}

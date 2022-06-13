@@ -9,14 +9,15 @@ import {
   Cog,
   CogFilled,
 } from '~/modules/common/components/Icons';
-import Dashboard from '~/modules/leave-management/pages/Dashboard';
+import Dashboard from '~/modules/leave-management/pages/Dashboard/Dashboard';
+import LeaveRequest from '~/modules/leave-management/pages/LeaveRequest';
 import SamplePage from '~/modules/others/pages/SamplePage';
 
 interface RoutePath {
   path: string;
-  icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
-  activeIcon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
   element: React.ReactElement;
+  icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
+  activeIcon?: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
   label: string;
 }
 
@@ -51,6 +52,12 @@ export const mainRoutes: RoutePath[] = [
   },
 ];
 
-const allRoutes = [...mainRoutes];
+export const otherRoutes = [
+  {
+    path: '/leave-management/:id',
+    element: <LeaveRequest />,
+  },
+];
+const allRoutes = [...mainRoutes, ...otherRoutes];
 
 export default allRoutes;
