@@ -10,17 +10,51 @@ import Flexbox from '~/modules/common/components/Flexbox';
 import Button from '~/modules/common/components/Button';
 import UserBadge from '~/modules/common/components/UserBadge/UserBadge';
 import Status from '~/modules/common/components/Status';
+import { Modal, useModal } from '~/modules/common/components/Modal';
+import { useNavigate } from 'react-router-dom';
 
 export function LeaveRequest() {
+  const navigate = useNavigate();
+
   const { loading, data } = useGetLeaveRequest() as {
     loading: boolean;
     data: Leave;
+  };
+  const { showModal, hideModal } = useModal();
+
+  const onSubmit = (values: any) => {
+    const handleAfterSubmit = () => {
+      hideModal();
+      navigate(-1);
+    };
+
+    if (values.status === 'accepted') {
+      showModal(() => (
+        <Modal title='Accept leave request'>
+          Do you want to accept this leave request?
+          <Modal.Actions>
+            <Button onClick={hideModal} label='Cancel' variant='secondary' />
+            <Button onClick={handleAfterSubmit} label='Accept' />
+          </Modal.Actions>
+        </Modal>
+      ));
+      return;
+    }
+
+    showModal(() => (
+      <Modal title='Reject leave request'>
+        Do you want to reject this leave request?
+        <Modal.Actions>
+          <Button onClick={hideModal} label='Cancel' variant='secondary' />
+          <Button onClick={handleAfterSubmit} label='Reject' variant='danger' />
+        </Modal.Actions>
+      </Modal>
+    ));
   };
 
   if (loading) {
     return <Loader />;
   }
-
   const { user, requestType, status, requestDate, submitDate, reason } = data;
   const { avatar, fullName, team, teamColor } = user;
 
@@ -56,10 +90,7 @@ export function LeaveRequest() {
             </Grid.Item>
           </Grid>
 
-          <Form
-            style={{ marginTop: '1.5rem' }}
-            onSubmit={(values) => alert('submitted ' + JSON.stringify(values))}
-          >
+          <Form style={{ marginTop: '1.5rem' }} onSubmit={onSubmit}>
             <Form.RadioGroup name='status' required>
               <Form.Radio value='accepted' label='Accept' />
               <Form.Radio value='rejected' label='Reject' />
@@ -68,7 +99,12 @@ export function LeaveRequest() {
             <Form.Input name='reason' label='Reason that I accept/reject' required rows={5} />
 
             <Flexbox justifyContent='center'>
-              <Button label='Cancel' variant='secondary' style={{ marginRight: '1.5rem' }} />
+              <Button
+                label='Cancel'
+                variant='secondary'
+                style={{ marginRight: '1.5rem' }}
+                onClick={() => navigate(-1)}
+              />
               <Form.SubmitButton label='Submit' />
             </Flexbox>
           </Form>

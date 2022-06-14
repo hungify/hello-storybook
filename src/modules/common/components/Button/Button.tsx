@@ -112,6 +112,6 @@ Button.propTypes = {
 
 Button.defaultProps = {
   backgroundColor: '#fff',
-  size: 'medium',
+  size: 'large',
   variant: 'primary',
 };

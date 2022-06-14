@@ -25,11 +25,23 @@ interface FlexboxProps {
   justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around';
   direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
   children: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
-export default function Flexbox({ alignItems, justifyContent, direction, children }: FlexboxProps) {
+export default function Flexbox({
+  alignItems,
+  justifyContent,
+  direction,
+  children,
+  ...restProps
+}: FlexboxProps) {
   return (
-    <StyledFlexbox $alignItems={alignItems} $justifyContent={justifyContent} $direction={direction}>
+    <StyledFlexbox
+      $alignItems={alignItems}
+      $justifyContent={justifyContent}
+      $direction={direction}
+      {...restProps}
+    >
       {children}
     </StyledFlexbox>
   );
