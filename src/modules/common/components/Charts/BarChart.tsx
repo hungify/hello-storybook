@@ -1,6 +1,6 @@
 import { Bar, BarChart as RechartsBarChart, ResponsiveContainer, Tooltip, XAxis } from 'recharts';
 import styled from 'styled-components';
-import type { ColorKey } from '~/modules/common/utils/styles/colors';
+import type { ColorKey } from '../../utils/styles/colors';
 import { colors } from '../../utils/styles';
 
 const ChartWrapper = styled.div`

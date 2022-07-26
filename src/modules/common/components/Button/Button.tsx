@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import objectKeys from '../../utils/object';
+import type { TransientProps } from '~/types';
 import { colors, typography } from '../../utils/styles'; // absolute import vite not working
 
 type Variant = 'primary' | 'secondary' | 'danger';
@@ -36,16 +38,15 @@ const SIZE_MAPPING = {
   },
 };
 
-interface ButtonProps {
-  label: string;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   size?: Size;
   disabled?: boolean;
-  onClick?: () => void;
-  [key: string]: any;
+  children?: React.ReactNode;
 }
+type PropsToTransient = 'size' | 'variant';
 
-const StyledButton = styled.button<ButtonProps>`
+const StyledButton = styled.button<TransientProps<ButtonProps, PropsToTransient>>`
   display: flex;
   flex-direction: row;
   border: 0;
@@ -63,8 +64,7 @@ const StyledButton = styled.button<ButtonProps>`
         color: ${colors.gray2};
       `;
     }
-    const variant = $variant as Variant;
-    const { background, hover, text } = COLOR_MAPPING[variant || 'primary'];
+    const { background, hover, text } = COLOR_MAPPING[$variant || 'primary'];
     return css`
       background: ${background};
       color: ${text};
@@ -77,8 +77,7 @@ const StyledButton = styled.button<ButtonProps>`
   }}
 
   ${({ $size }) => {
-    const size = $size as Size; // Transient props
-    const { height, padding, typography } = SIZE_MAPPING[size || 'medium'];
+    const { height, padding, typography } = SIZE_MAPPING[$size || 'medium'];
     return css`
       height: ${height};
       padding: ${padding};
@@ -87,23 +86,26 @@ const StyledButton = styled.button<ButtonProps>`
   }}
 `;
 
-export function Button({ label, variant, size, disabled, onClick, ...restProps }: ButtonProps) {
+export function Button({ children, variant, size, disabled, ...restProps }: ButtonProps) {
+  const props = {
+    ...restProps,
+  };
+
+  if (disabled) {
+    objectKeys(props).forEach((key) => {
+      if (key.startsWith('on') && typeof props[key] === 'function') {
+        delete props[key];
+      }
+    });
+  }
   return (
-    <StyledButton
-      type='button'
-      $variant={variant}
-      $size={size}
-      disabled={disabled}
-      onClick={onClick}
-      {...restProps}
-    >
-      {label}
+    <StyledButton $variant={variant} $size={size} disabled={disabled} {...props}>
+      {children}
     </StyledButton>
   );
 }
 
 Button.propTypes = {
-  label: PropTypes.string.isRequired,
   variant: PropTypes.oneOf(['primary', 'secondary', 'danger']),
   size: PropTypes.oneOf(['large', 'medium']),
   backgroundColor: PropTypes.string,

@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-
-import { typography, colors } from '../../utils/styles';
+import { colors, typography } from '~/modules/common/utils/styles';
+import { TransientProps } from '~/types';
 import { Bell, ChevronDown } from '../Icons';
-import Logo from './Logo.svg';
 import Avatar from './avatar.png';
+import Logo from './Logo.svg';
 
-const StyledHeader = styled.header<HeaderProps>`
+type PropsToTransient = 'fixed';
+
+const StyledHeader = styled.header<TransientProps<HeaderProps, PropsToTransient>>`
   ${({ $fixed }) => {
     const fixed = $fixed as HeaderProps;
     return (
@@ -45,7 +47,6 @@ const StyledHeader = styled.header<HeaderProps>`
 
 interface HeaderProps {
   fixed?: boolean;
-  [key: string]: any;
 }
 
 export function Header({ fixed, ...restProps }: HeaderProps) {

@@ -28,9 +28,7 @@ export function Field(props: FieldProps) {
   const { input, meta } = useField(name!, {
     ...restProps,
     type,
-    validate: required
-      ? composeValidators(isRequired, ...validate)
-      : composeValidators(...validate),
+    validate: required ? composeValidators(isRequired, ...validate) : composeValidators(validate),
   });
 
   if (type === 'radio' || type === 'checkbox') {

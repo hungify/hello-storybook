@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { SVGProps } from 'react';
 import styled, { css } from 'styled-components';
 
 import { typography, colors } from '../../utils/styles';
@@ -17,8 +18,7 @@ const StyledItem = styled.a<ItemProps>`
     background-color: ${colors.black};
     cursor: pointer;
   }
-  ${({ $active }) => {
-    const active = $active as ItemProps;
+  ${({ active }) => {
     return active
       ? css`
           background-color: ${colors.tealDark};
@@ -43,13 +43,15 @@ const StyledItem = styled.a<ItemProps>`
 interface ItemProps {
   label: string;
   active?: boolean;
+  to?: string;
   as?: React.ElementType;
-  [key: string]: any;
+  ActiveIcon: (props: SVGProps<SVGSVGElement>) => JSX.Element;
+  Icon: (props: SVGProps<SVGSVGElement>) => JSX.Element;
 }
 
 export default function Item({ label, as, ActiveIcon, Icon, active, ...restProps }: ItemProps) {
   return (
-    <StyledItem $active={active} as={as} {...restProps}>
+    <StyledItem active={active} as={as} {...restProps}>
       {active ? <ActiveIcon color={colors.primary} /> : <Icon color={colors.white} />}
       {label}
     </StyledItem>

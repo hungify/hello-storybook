@@ -1,21 +1,15 @@
 import styled, { css } from 'styled-components';
+import { TransientProps } from '~/types';
 
-type FlexboxStyled = {
-  $alignItems?: string;
-  $justifyContent?: string;
-  $direction?: string;
-};
+type PropsToTransient = 'alignItems' | 'justifyContent' | 'direction';
 
-const StyledFlexbox = styled.div<FlexboxStyled>`
+const StyledFlexbox = styled.div<TransientProps<FlexboxProps, PropsToTransient>>`
   display: flex;
   ${({ $alignItems, $justifyContent, $direction }) => {
-    const alignItems = $alignItems;
-    const justifyContent = $justifyContent;
-    const direction = $direction;
     return css`
-      ${alignItems && `align-items: ${alignItems};`}
-      ${justifyContent && `justify-content: ${justifyContent};`}
-      ${direction && `flex-direction: ${direction};`}
+      ${$alignItems && `align-items: ${$alignItems};`}
+      ${$justifyContent && `justify-content: ${$justifyContent};`}
+      ${$direction && `flex-direction: ${$direction};`}
     `;
   }}
 `;

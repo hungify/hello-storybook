@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { colors, typography } from '../../utils/styles'; // absolute import vite not working
+import { TransientProps } from '~/types';
 
 export type TagVariant = 'blue' | 'green' | 'yellow' | 'orange' | 'teal';
 
@@ -11,13 +12,15 @@ interface TagProps {
   [key: string]: any;
 }
 
-const StyledTag = styled.span<TagProps>`
+type PropsToTransient = 'variant';
+
+const StyledTag = styled.span<TransientProps<TagProps, PropsToTransient>>`
   display: inline-block;
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
   ${typography.size.xsmall}
   ${({ $variant }) => {
-    const variant = ($variant as TagVariant) || 'blue';
+    const variant = $variant || 'blue';
     const color = colors[variant];
     const background = colors[`${variant}Light`];
     return css`

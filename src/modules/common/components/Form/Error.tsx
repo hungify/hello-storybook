@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import { typography, colors } from '../../utils/styles';
 
 const Error = styled.div`
